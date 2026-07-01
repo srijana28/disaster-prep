@@ -115,17 +115,6 @@ graph TD
     Get-Process -Id (Get-NetTCPConnection -LocalPort 18081, 8090 -ErrorAction SilentlyContinue).OwningProcess | Stop-Process -Force
     ```
 
-## Assets
-
-### Workflow Diagram
-![Workflow Diagram](file:///c:/Users/pkgup/Desktop/Srijana/AI%20Agents/adk-workspace1/disaster-prep/assets/architecture_diagram.png)
-
-### Cover Banner
-![Cover Banner](file:///c:/Users/pkgup/Desktop/Srijana/AI%20Agents/adk-workspace1/disaster-prep/assets/cover_page_banner.png)
-
-## Demo Script
-
-The spoken narration script for presenting this agent can be found at [DEMO_SCRIPT.txt](file:///c:/Users/pkgup/Desktop/Srijana/AI%20Agents/adk-workspace1/disaster-prep/DEMO_SCRIPT.txt).
 
 ## Push to GitHub
 
