@@ -1,0 +1,33 @@
+[0:00 — HOOK]
+When a disaster strikes, people panic, and finding a clear, safe evacuation route and checklist personalized for your family becomes a life-or-death challenge. That is why we built disaster-prep, an intelligent emergency coordinator that acts as a secure, real-time lifeline.
+
+[0:20 — WHAT IT IS]
+disaster-prep is a stateful multi-agent system built on the Google Agent Development Kit 2.0 framework under the Agents for Good track. It helps users generate custom, secure, and context-specific evacuation guidelines during natural crises.
+
+[0:40 — SHOW THE BANNER]
+(show assets/cover_page_banner.png)
+As you can see on our cover banner, disaster-prep is designed to be automated, secure, and intelligent, integrating geo-locational hazard feeds and safety protocols at a glance.
+
+[1:00 — ARCHITECTURE]
+(show assets/architecture_diagram.png)
+Let us walk through the architecture diagram to see how it works under the hood. 
+First, the user input enters our workflow and is immediately filtered by the Security Checkpoint node to redact sensitive PII like GPS coordinates and to intercept prompt injections.
+Next, if the input passes, it is routed to the CoordinatorAgent, which acts as our central orchestrator.
+The CoordinatorAgent then delegates tasks to two specialized sub-agents: the RoutePlannerAgent and the ChecklistSpecialistAgent using ADK AgentTools.
+These sub-agents query our Model Context Protocol or MCP server to pull real-time hazard warnings, open shelters, and weather conditions.
+Finally, the plan is passed to the Human Approval node, where the workflow pauses using RequestInput before routing the final approved plan to the Final Output node.
+
+[2:00 — LIVE DEMO]
+(switch to playground at localhost:18081)
+Let's look at the running interface. (pause)
+In our first test case, we ask: "I am in San Francisco (94102) and there is a flood warning. My family has 2 adults, 1 toddler, and a dog. Help us plan."
+You can see that the Security Checkpoint scrubs the location data, the sub-agents fetch the active flood warning and Sunset Recreation Center shelter information from our MCP tools, and compile the custom toddler and pet checklist.
+The workflow now pauses, requesting our approval: "Do you approve and want to finalize this plan?"
+Once we reply "yes", the system finalizes and logs the plan.
+If a malicious user attempts to bypass our system with prompt injection, like in our second test case, the security checkpoint immediately intercepts the keyword "ignore previous instructions", terminates the flow, and logs a critical audit warning.
+
+[3:00 — SECURITY & MCP]
+Our Security Checkpoint handles PII redaction and domain-specific safety filtering automatically, outputting structured JSON logs for audit compliance. Meanwhile, our Stdio MCP server connects our LLM agents directly to live data, including weather parameters and shelter capacities.
+
+[3:30 — IMPACT / CLOSE]
+disaster-prep provides individuals, families, and emergency response teams with a secure, highly-personalized planning toolkit when they need it most. By combining structured workflows, secure checkpoints, and real-time MCP tools, we make AI-powered disaster preparedness safe, reliable, and accessible. Thank you.
